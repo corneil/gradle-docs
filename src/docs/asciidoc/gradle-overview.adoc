@@ -9,8 +9,6 @@
 
 *Gradle is the build system you have been waiting for.*
 
-
-
 ## Gradle System
 * Gradle API
 ** Project
@@ -57,17 +55,19 @@ apply plugin: 'java'
 sourceSets {
     main {
         java {
-            srcDir 'src'
+            srcDir 'src' // <1>
         }
     }
 }
 ....
+<1> Our old ant project used src folder instead of conventional src/main/java
 
 [NOTE]
 ====
 Source code can be imported
 ====
-[source,groovy]
+
+[source,groovy,title="build.gradle"]
 ....
 include::../../../build.gradle[]
 ....
