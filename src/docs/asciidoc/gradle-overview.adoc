@@ -1,0 +1,73 @@
+# Gradle Overview
+
+[width=50]
+|===
+|Name|{documentName}
+|Version|{documentVersion}
+|Date|{documentDate}
+|===
+
+*Gradle is the build system you have been waiting for.*
+
+
+
+## Gradle System
+* Gradle API
+** Project
+** Task
+** Configuration
+** SourceSet
+** Dependencies
+** Plugins
+
+[ditaa, gradle-system, png, title="Gradle System"]
+....
++--------------+
+| Gradle Core  |-----+
++--------------+     |
+     |               v
+     |     +------------------+
+     |     | Ivy Dependencies |
+     |     +------------------+
+     |
+     |     +--------------------+
+     |---->| Maven Dependencies |
+           +--------------------+
+....
+
+## Gradle Use-Cases
+
+[plantuml, gradle-usecases, png, title="Gradle Use-Cases"]
+....
+include::gradle-use-cases.puml[]
+....
+
+## Gradle Index
+### Resources
+* http://gradle.org[gradle.org]
+* https://docs.gradle.org[Documentation]
+
+## Gradle Sample
+
+// asciidoctor use coderay which has groovy support
+[source,groovy]
+....
+apply plugin: 'java'
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+    }
+}
+....
+
+[NOTE]
+====
+Source code can be imported
+====
+[source,groovy]
+....
+include::../../../build.gradle[]
+....

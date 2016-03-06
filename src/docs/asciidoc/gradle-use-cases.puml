@@ -1,0 +1,13 @@
+@startuml
+:User: as User
+(Define Build Model) as (Use)
+
+User --> (Use)
+User -> (Start Gradle)
+User -left-> (Continuous Build)
+
+note right of (Use)
+Gradle is a Groovy DSL
+end note
+
+@enduml
