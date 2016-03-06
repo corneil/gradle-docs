@@ -33,17 +33,12 @@
            +--------------------+
 ....
 
-## Gradle Use-Cases
-
-[plantuml, gradle-usecases, png, title="Gradle Use-Cases"]
-....
-include::gradle-use-cases.puml[]
-....
-
-## Gradle Index
-### Resources
-* http://gradle.org[gradle.org]
-* https://docs.gradle.org[Documentation]
+// ## Gradle Use-Cases
+//
+// [plantuml, gradle-usecases, png, title="Gradle Use-Cases"]
+// ....
+// include::gradle-use-cases.puml[]
+// ....
 
 ## Gradle Sample
 
@@ -71,3 +66,8 @@ Source code can be imported
 ....
 include::../../../build.gradle[]
 ....
+
+## Gradle Index
+### Resources
+* https://gradle.org[Gradle]
+* https://docs.gradle.org[Documentation]

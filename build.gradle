@@ -1,5 +1,5 @@
 plugins {
-    id 'org.asciidoctor.convert' version '1.5.2'
+    id 'org.asciidoctor.convert' version '1.5.3'
     id 'com.github.jruby-gradle.base' version '0.1.17'
 }
 
@@ -47,10 +47,6 @@ def graphvizDotLoc() {
     def dotFile = new File(result)
     logger.info("graphvizdot=$result:found=${dotFile.exists()}")
     return result
-}
-
-asciidoctorj {
-    version = '1.5.2'
 }
 
 asciidoctor {
