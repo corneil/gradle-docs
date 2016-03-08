@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat
+
 plugins {
     id 'org.asciidoctor.convert' version '1.5.3'
     id 'com.github.jruby-gradle.base' version '0.1.17'
@@ -16,40 +18,10 @@ dependencies {
     gems 'rubygems:asciidoctor-diagram:1.3.0'
 }
 
-rootProject.ext.buildDate = new java.text.SimpleDateFormat('yyyy-MM-dd HH:mm').format(new Date())
-def buildId = System.getenv('BUILD_ID')
-if (buildId != null) {
-    rootProject.ext.buildId = buildId
-} else {
-    def hostName = System.getenv('HOSTNAME')
-    if(!hostName) {
-        hostName = System.getenv('COMPUTERNAME')
-    }
-    def df = new java.text.SimpleDateFormat('yyyy-MM-dd\'T\'HH:mm:ss.SSSZ')
-    def buildDate = df.format(new Date())
-    rootProject.ext.buildId = "$hostName-$buildDate"
-}
-
 defaultTasks = ['asciidoctor']
 
-def graphvizDotLoc() {
-    def result = System.getProperty('os.name').toLowerCase().contains('win') ? 'dot.exe' : 'dot'
-    if(System.getProperty('graphvizdot')) {
-        result = System.getProperty('graphvizdot')
-    } else if(rootProject.hasProperty('graphvizdot')) {
-        result = graphvizdot
-    } else {
-        def graphVizDotEnv = System.getenv('GRAPHVIZ_DOT')
-        if (graphVizDotEnv) {
-            result = graphVizDotEnv
-        }
-    }
-    def dotFile = new File(result)
-    logger.info("graphvizdot=$result:found=${dotFile.exists()}")
-    return result
-}
-
 asciidoctor {
+    def buildDate = new SimpleDateFormat('yyyy-MM-dd HH:mm').format(new Date())
     dependsOn jrubyPrepareGems
     requires = ['asciidoctor-diagram', 'asciidoctor-diagram/plantuml']
     gemPath = jrubyPrepareGems.outputDir
@@ -63,14 +35,14 @@ asciidoctor {
             'idprefix': '',
             'idseparator': '-',
             'docinfo1': 'true',
-            'documentName': rootProject.name,
+            'documentName': project.name,
             'documentVersion': documentVersion,
             'documentDate': buildDate
 }
 
-// asciidoctor {}.inputs.file(file('build.gradle'))
-// asciidoctor {}.inputs.file(file('gradle.properties'))
-// asciidoctor {}.inputs.file(file('settings.gradle'))
+asciidoctor.inputs.file(file('build.gradle'))
+asciidoctor.inputs.file(file('gradle.properties'))
+asciidoctor.inputs.file(file('settings.gradle'))
 
 task clean (type:Delete) {
     delete project.buildDir

@@ -35,10 +35,10 @@
 
 // ## Gradle Use-Cases
 //
-// [plantuml, gradle-usecases, png, title="Gradle Use-Cases"]
-// ....
-// include::gradle-use-cases.puml[]
-// ....
+[plantuml, gradle-usecases, png, title="Gradle Use-Cases"]
+....
+include::gradle-use-cases.puml[]
+....
 
 ## Gradle Sample
 
